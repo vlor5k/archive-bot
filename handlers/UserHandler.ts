@@ -13,7 +13,7 @@ export default async function HandleUser(user: User) {
 
     // if this is the first time seeing this user, add it to database
     if(!existing) {
-        logger.info("New user added", user.username);
+        logger.info("New user indexed", user.username);
         await prisma.user.create({
             data: {
                 id: user.id,
