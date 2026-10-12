@@ -7,7 +7,7 @@ const logger = new Logger("UserHandler");
 export default async function HandleUser(user: User) {
     // If existing doesnt exist, create it
     // Otherwise update it
-    const existing = await prisma.user.upsert({
+    await prisma.user.upsert({
         where: {
             id: user.id
         },
