@@ -1,0 +1,8 @@
+-- CreateTable
+CREATE TABLE "Logins" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Logins_id_key" ON "Logins"("id");

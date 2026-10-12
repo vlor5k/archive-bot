@@ -96,3 +96,8 @@ model Reaction {
   user   User   @relation(fields: [userId], references: [id])
   userId String
 }
+
+model Logins {
+  id Int @id @unique @default(autoincrement())
+  at DateTime @default(now())
+}
