@@ -1,4 +1,4 @@
-# archive-bot
+# Do not hold me responsible if your Discord account gets terminated. This program violates Discord's TOS
 
 To install dependencies:
 
