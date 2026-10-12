@@ -11,3 +11,67 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
+
+model User {
+  // discord id
+  id          String @id @unique
+  username    String
+  displayname String
+
+  messages  Message[]
+  reactions Reaction[]
+}
+
+model Guild {
+  // discord id
+  id   String @id @unique
+  name String
+
+  categories Category[]
+  channels   Channel[]
+}
+
+model Category {
+  // discord id
+  id   String @id @unique
+  name String
+
+  guild   Guild  @relation(fields: [guildId], references: [id])
+  guildId String
+}
+
+model Channel {
+  // discord id
+  id   String @id @unique
+  name String
+
+  guild   Guild  @relation(fields: [guildId], references: [id])
+  guildId String
+
+  messages Message[]
+}
+
+model Message {
+  // discord id
+  id String @id @unique
+
+  author User   @relation(fields: [userId], references: [id])
+  userId String
+
+  channel   Channel    @relation(fields: [channelId], references: [id])
+  channelId String
+
+  reactions Reaction[]
+}
+
+model Reaction {
+  // incremental id
+  id        Int     @id @unique @default(autoincrement())
+  emoji     String
+
+  message   Message @relation(fields: [messageId], references: [id])
+  messageId String
+  
+  user   User    @relation(fields: [userId], references: [id])
+  userId    String
+}
