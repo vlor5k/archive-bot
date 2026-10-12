@@ -18,6 +18,8 @@ model User {
   username    String
   displayname String
 
+  startedArchiving DateTime @default(now())
+
   messages  Message[]
   reactions Reaction[]
 }
@@ -26,6 +28,8 @@ model Guild {
   // discord id
   id   String @id @unique
   name String
+
+  startedArchiving DateTime @default(now())
 
   categories Category[]
   channels   Channel[]
@@ -36,6 +40,8 @@ model Category {
   id   String @id @unique
   name String
 
+  startedArchiving DateTime @default(now())
+
   guild   Guild  @relation(fields: [guildId], references: [id])
   guildId String
 }
@@ -44,6 +50,8 @@ model Channel {
   // discord id
   id   String @id @unique
   name String
+
+  startedArchiving DateTime @default(now())
 
   guild   Guild  @relation(fields: [guildId], references: [id])
   guildId String
@@ -54,6 +62,8 @@ model Channel {
 model Message {
   // discord id
   id String @id @unique
+
+  archivedAt DateTime @default(now())
 
   author User   @relation(fields: [userId], references: [id])
   userId String
@@ -71,6 +81,8 @@ model Reaction {
 
   message   Message @relation(fields: [messageId], references: [id])
   messageId String
+  
+  archivedAt DateTime @default(now())
   
   user   User    @relation(fields: [userId], references: [id])
   userId    String
