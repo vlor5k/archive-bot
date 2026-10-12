@@ -5,13 +5,13 @@
   "private": true,
   "devDependencies": {
     "@types/bun": "latest",
-    "prisma": "^8.0.0-rc.22"
+    "prisma": "7"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
-    "@prisma/client": "^7.10.0",
+    "@prisma/client": "7",
     "sqlite3": "^6.0.1"
   },
   "scripts": {
