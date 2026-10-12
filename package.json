@@ -13,5 +13,8 @@
   "dependencies": {
     "@prisma/client": "^7.10.0",
     "sqlite3": "^6.0.1"
+  },
+  "scripts": {
+    "postinstall": "prisma skills sync || exit 0"
   }
 }
