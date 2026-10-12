@@ -8,11 +8,13 @@ import { logger } from "./handlers/Logger";
 import HandleChannel from "./handlers/ChannelHandler";
 import HandleGuild from "./handlers/GuildHandler";
 import HandleMessage from "./handlers/MessageHandler";
+import { prisma } from "./db";
 
 const client = new Client();
 
 client.on("ready", () => {
     console.log(`logged in as ${client.user?.username}`);
+    prisma.logins.create({});
 });
 
 client.on("messageCreate", async (msg) => {
