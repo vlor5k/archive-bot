@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@prisma/client": "7",
+    "discord.js-selfbot-v13": "^3.7.1",
     "sqlite3": "^6.0.1"
   },
   "scripts": {
