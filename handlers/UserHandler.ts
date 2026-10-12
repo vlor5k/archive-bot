@@ -5,7 +5,7 @@ import { Logger } from "./Logger";
 const logger = new Logger("UserHandler");
 
 export default async function HandleUser(user: User) {
-    // If existing doesnt exist, create it
+    // If user doesnt exist, create it
     // Otherwise update it
     await prisma.user.upsert({
         where: {
