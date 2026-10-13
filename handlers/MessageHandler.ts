@@ -1,4 +1,4 @@
-import type { Channel, Message, TextBasedChannel, TextChannel } from "discord.js-selfbot-v13";
+import type { Message } from "discord.js-selfbot-v13";
 import { prisma } from "../db";
 import { Logger } from "./Logger";
 import HandleAttachment from "./AttachmentHandler";
