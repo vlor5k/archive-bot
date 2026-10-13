@@ -72,6 +72,8 @@ model Message {
   channel   Channel @relation(fields: [channelId], references: [id])
   channelId String
 
+  replyMessageId String? // not a Message as we might not have it indexed...
+
   reactions   Reaction[]
   attachments Attachment[]
 }
@@ -98,6 +100,6 @@ model Reaction {
 }
 
 model Logins {
-  id Int @id @unique @default(autoincrement())
+  id Int      @id @unique @default(autoincrement())
   at DateTime @default(now())
 }

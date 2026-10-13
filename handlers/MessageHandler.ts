@@ -26,7 +26,8 @@ export default async function HandleMessage(message: Message) {
             id: message.id,
             userId: message.author.id,
             channelId: message.channelId,
-            content: message.content
+            content: message.content,
+            replyMessageId: message.reference?.messageId
         },
         update: {
             content: message.content
