@@ -2,7 +2,7 @@ if(!process.env.DISCORD_TOKEN) {
     throw "Missing DISCORD_TOKEN in environment!";
 }
 
-import { Client, TextChannel } from "discord.js-selfbot-v13";
+import { Client, Message, TextChannel } from "discord.js-selfbot-v13";
 import HandleUser from "./handlers/UserHandler";
 import { logger } from "./handlers/Logger";
 import HandleChannel from "./handlers/ChannelHandler";
@@ -16,6 +16,17 @@ client.on("ready", () => {
     console.log(`logged in as ${client.user?.username}`);
     prisma.logins.create({});
 });
+
+client.on("messageUpdate", async (_oldMsg, newMsg) => {
+    // apparently msg can be a Message or a PartialMessage...
+    // Nothing about PartialMessage on the docs (https://discordjs-self-v13.netlify.app)
+    // and I can't find an import for it...
+    if(newMsg instanceof Message) {
+        await HandleMessage(newMsg);
+    } else {
+        console.debug("Not instanceof Message... Investigate... ", newMsg);
+    }
+})
 
 client.on("messageCreate", async (msg) => {
     await HandleUser(msg.author);
