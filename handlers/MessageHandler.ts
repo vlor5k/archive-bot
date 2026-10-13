@@ -24,7 +24,7 @@ export default async function HandleMessage(message: Message) {
         },
         create: {
             id: message.id,
-            userId: message.author.id,
+            userId: message.author?.id || "0",
             channelId: message.channelId,
             content: message.content,
             replyMessageId: message.reference?.messageId
